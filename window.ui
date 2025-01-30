@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="loic">
+  <object class="GtkTextBuffer" id="help_text">
+    <property name="text" translatable="yes"></property>
+  </object>
+  <template class="LoicAppWindow" parent="GtkApplicationWindow">
+    <property name="title" translatable="yes">Low-Effort IRC Client</property>
+    <property name="default-width">320</property>
+    <property name="default-height">224</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkScrolledWindow">
+            <child>
+              <object class="GtkTextView" id="output_box">
+                <property name="editable">FALSE</property>
+                <property name="vexpand">TRUE</property>
+                <property name="wrap-mode">GTK_WRAP_WORD_CHAR</property>
+                <property name="buffer">
+                  <object class="GtkTextBuffer" id="status_buffer">
+                    <property name="text" translatable="yes">This project is made with love by a queer trans person.
+The folks of these identities who have contributed to the project would like to make their identities known:
+Autgender; Not a person; Anticapitalist; Genderqueer; Trans.
+
+Enter commands with Ctrl+/. To connect, set a nickname with the 'nick' command. Use the 'help' command for more.</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <child>
+              <object class="GtkToggleButton" id="command_mode">
+                <property name="label" translatable="yes">/</property>
+                <property name="tooltip-text" translatable="yes">Enter a command</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkEntry" id="input_box">
+                <property name="hexpand">TRUE</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

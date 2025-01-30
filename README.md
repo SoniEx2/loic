@@ -2,6 +2,17 @@
 
 An experiment in using Libera and OFC with an unifying IRC client.
 
+## Anonymous contributions
+
+This project accepts anonymous contributions! They SHOULD NOT be sent via
+email. Email is not anonymous, in fact, it is kinda the opposite, and PGP kinda
+makes it worse. Rather, contact us on IRC for details.
+
+## Acknowledgements
+
+Thanks to GNOME for GTK4 and associated libraries. Thanks to spacekookie for
+pointing us to gtk-rs examples, even if they're not easy to translate to C.
+
 ## License
 
 This program is free software; you can redistribute it and/or modify
