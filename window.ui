@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="loic">
   <object class="GtkTextBuffer" id="help_text">
-    <property name="text" translatable="yes"></property>
+    <property name="text" translatable="yes">The primary purpose of the Low-Effort IRC Client was as a learning experience, to learn a bit of GTK and related libraries.
+
+Loic comes with the following commands:
+- nick &lt;nick&gt;
+    Connects to Libera and OFTC with the given nick.
+- raw &lt;network&gt; &lt;line&gt;
+    Sends a raw IRC line to a given network.
+- join &lt;channel&gt;
+    Joins the given channel on both networks.
+- buffer &lt;channel&gt;
+    Changes the buffer to the given channel.
+- status
+    Changes the buffer to status messages.
+- help
+    Changes the buffer to this help text.
+
+Note that Loic does not distinguish channel messages from different networks. This is intentional, to experiment with treating the same channel on different networks as interchangeable.</property>
   </object>
   <template class="LoicAppWindow" parent="GtkApplicationWindow">
     <property name="title" translatable="yes">Low-Effort IRC Client</property>
