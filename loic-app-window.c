@@ -101,6 +101,24 @@ static void loic_app_window_append_line(LoicAppWindow *win, const char *line) {
 	append_line_to_buffer(win, buff, line);
 }
 
+static bool channeleq(const char *a, const char *b) {
+	for (; *a && *b; a++, b++) {
+		if (*a != *b) {
+			if (*a >= 65 && *a <= 94) {
+				if (*a + 32 != *b) {
+					return false;
+				}
+			}
+			if (*a >= 97 && *a <= 126) {
+				if (*a - 32 != *b) {
+					return false;
+				}
+			}
+		}
+	}
+	return !*a && !*b;
+}
+
 static bool srceq(const char *src, const char *nick) {
 	if (src[0] != ':') {
 		return false;
@@ -132,7 +150,7 @@ static bool srceq(const char *src, const char *nick) {
 static gint find_buffer_by_name(gconstpointer a, gconstpointer b) {
 	const struct IrcBuffer *buf = a;
 	const gchar *name = b;
-	return strcmp(buf->name, name);
+	return !channeleq(buf->name, name);
 }
 
 static gint find_buffer_by_buffer(gconstpointer a, gconstpointer b) {
