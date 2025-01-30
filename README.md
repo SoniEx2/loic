@@ -2,6 +2,11 @@
 
 An experiment in using Libera and OFC with an unifying IRC client.
 
+The idea of unifying channels across networks basically comes down to "Oh, you
+wanna join an open source project's IRC channel, but you don't know if they're
+on OFTC or Libera, or maybe they're on both? Well, what if you didn't need to
+care, because this client handles that for you."
+
 ## Anonymous contributions
 
 This project accepts anonymous contributions! They SHOULD NOT be sent via
