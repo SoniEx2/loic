@@ -624,6 +624,9 @@ static void activate_cb(GtkEntry *entry, gpointer user_data) {
 				struct IrcBuffer *buffer = entry->data;
 				loic_app_window_select_buffer(win,
 						buffer->buffer);
+			} else {
+				loic_app_window_append_line(win,
+						"no such buffer");
 			}
 		} else if (streq("raw", text)) {
 			loic_app_window_append_line(win,
