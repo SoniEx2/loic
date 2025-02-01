@@ -55,6 +55,11 @@ struct _LoicAppWindow {
 	gchar *oftc_nick;
 };
 
+static const char *const allowed_channels[] = {
+	"#loic",
+	NULL
+};
+
 G_DEFINE_TYPE(LoicAppWindow, loic_app_window, GTK_TYPE_APPLICATION_WINDOW);
 
 #define MAX_BUFFER_LINES 1000
@@ -660,14 +665,22 @@ static void activate_cb(GtkEntry *entry, gpointer user_data) {
 					"network must be libera or oftc");
 		} else if (g_str_has_prefix(text, "join ")) {
 			GOutputStream *o_stream;
-			if (win->libera) {
+			/* have to use this because we still wanna do further
+			 * processing */
+			bool flag = g_strv_contains(
+					allowed_channels, text + 5);
+			if (!flag) {
+				loic_app_window_append_line(win,
+						"channel does not allow loic");
+			}
+			if (flag && win->libera) {
 				o_stream = g_io_stream_get_output_stream(
 						G_IO_STREAM(win->libera));
 				g_output_stream_printf(o_stream, NULL,
 						win->exiting, NULL,
 						"JOIN %s\r\n", text + 5);
 			}
-			if (win->oftc) {
+			if (flag && win->oftc) {
 				o_stream = g_io_stream_get_output_stream(
 						G_IO_STREAM(win->oftc));
 				g_output_stream_printf(o_stream, NULL,
